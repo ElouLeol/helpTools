@@ -79,6 +79,13 @@ var helpTools = {
  		return cookie ? decodeURIComponent(cookie[1]) : undefined;
 	},
 
+	syncGet(url) {
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET', url, false);
+		xhr.send();
+		return xhr.response;
+	},
+
 	anim(elem, onstop="nothing") {
 		if (helpTools.bi('hlptls-style-anim') === null) {
 			helpTools.prepChild('head', `<style id="hlptls-style-anim">@keyframes hlptls-flip {0%{transform:perspective(500px)rotateX(0deg)}100%{transform:perspective(500px)rotateX(-90deg)}}.hlptls-flip{animation:hlptls-flip 300ms ease;transform-origin: 50% 0%}.hlptls-fade{transition:opacity 12s linear}</style>`, 'beforeend');
